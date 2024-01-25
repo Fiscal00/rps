@@ -1,68 +1,112 @@
-const choices = ["rock", "paper", "scissors"];
+const playerWins = document.querySelector('#pwc');
+const cpuWins = document.querySelector('#cwc');
+const tieCount = document.querySelector('#tiecount');
+const resultDisplay = document.querySelector('#result');
+const reset = document.querySelector('#resetbutton')
+const winPercentage = document.querySelector('#playerwin')
+const cpuWinPercentage = document.querySelector('#cpuwin')
+const rock = document.querySelector ('#rock');
+const paper = document.querySelector ('#paper');
+const scissors = document.querySelector ('#scissors');
 
-let playerWins = 0;
-let cpuWins = 0;
+let wins = 0;
+let losses = 0;
 let ties = 0;
-let rounds = 0;
+let cpuChoice = "";
+let result = "";
+let winRatio = 0;
+let cpuWinRatio = 0;
 
-game();
+const choices = ["rock", "paper", "scissors"];
+const random = Math.floor(Math.random() * 3);
 
-function playRound(){
+resultDisplay.style.fontWeight = '400';
 
-    const playerChoice = prompt("Rock, Paper, or Scissors?").toLowerCase(); //makes it case insensitive
-
-    const cpuChoice = choices[Math.floor(Math.random() * 3)];
-    let result = "";
-
-    rounds++;
-
-
-    if(playerChoice === cpuChoice){
-        result = "It's a tie!"
-        ties++;
-
+function counter(){
+    if(result === "It's a tie!"){
+        tieCount.innerHTML = ties;
+    }else if(result === "You win!"){
+        playerWins.innerHTML = wins;
     }else{
-        switch(playerChoice){
-            case "rock":
-                result = (cpuChoice === "scissors") ? "You win!" : "You lose!";
-                if(result === "You win!"){
-                    playerWins++;
-                    return(result);
-                }else{
-                    cpuWins++;
-                    return(result);
-                }
-                
-
-            case "scissors":
-                result = (cpuChoice === "paper") ? "You win!" : "You lose!";
-                if(result === "You win!"){
-                    playerWins++;
-                    return(result);
-                }else{
-                    cpuWins++;
-                    return(result);
-                }
-            
-
-            case "paper":
-                result = (cpuChoice === "rock") ? "You win!" : "You lose!"
-                if(result === "You win!"){
-                    playerWins++;
-                    return(result);
-                } else{
-                    cpuWins++;
-                    return(result);
-                }
-        }   
+        cpuWins.innerHTML = losses;
     }
+    resultDisplay.innerHTML = `The computer chose ${cpuChoice}!\n ${result}`;
+    winRatio = (wins * 100) / (wins + losses + ties);
+    winRatio = winRatio.toFixed(2);
+    winPercentage.innerHTML = winRatio + '%';
+    cpuWinRatio = (losses * 100) / (wins + losses + ties);
+    cpuWinRatio = cpuWinRatio.toFixed(2);
+    cpuWinPercentage.innerHTML = cpuWinRatio + '%';
 }
 
-function game(){
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    return(`Player wins: ${playerWins}\nComputer wins: ${cpuWins}\nTies: ${ties}`);
-}
+rock.addEventListener("click", function(e){    //rock button
+    cpuChoice = choices[Math.floor(Math.random() * 3)];
+    switch(cpuChoice){
+        case "rock" :
+            ties++;
+            result = "It's a tie!"
+            break;
+        case "paper" :
+            losses++;
+            result = "You lose!"
+            break;
+        case "scissors" :
+            wins++
+            result = "You win!"
+            break;
+    }
+    counter();
+});
+
+paper.addEventListener("click", function(e){     //paper button
+    cpuChoice = choices[Math.floor(Math.random() * 3)];
+    switch(cpuChoice){
+        case "paper" :
+            ties++;
+            result = "It's a tie!"
+            break;
+        case "scissors" :
+            losses++;
+            result = "You lose!"
+            break;
+        case "rock" :
+            wins++
+            result = "You win!"
+            break;
+    }
+    counter();
+});
+
+scissors.addEventListener("click", function(e){      //scissors button
+    cpuChoice = choices[Math.floor(Math.random() * 3)];
+    switch(cpuChoice){
+        case "scissors" :
+            ties++;
+            result = "It's a tie!"
+            break;
+        case "rock" :
+            losses++;
+            result = "You lose!"
+            break;
+        case "paper" :
+            wins++
+            result = "You win!"
+            break;
+    }
+    counter();
+});
+
+reset.addEventListener("click", function(e){
+    if(confirm('Are you sure you want to reset?')){
+        tieCount.innerHTML = '-';
+        playerWins.innerHTML = '-';
+        cpuWins.innerHTML = '-';
+        resultDisplay.innerHTML = '-';
+        winPercentage.innerHTML = '-';
+        cpuWinPercentage.innerHTML = '-';
+        wins = 0;
+        losses = 0;
+        ties = 0;
+
+    }else{}
+});

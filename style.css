@@ -1,3 +1,89 @@
-.section1{
-    color: red;
+*{
+    font-family: 'Roboto', sans-serif;
+    padding: 0px;
+    margin: 5px 10px;
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.top{
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+}
+.top h1{
+    justify-content: center;
+}
+.buttons{
+    display: flex;
+    justify-content: space-evenly;
+}
+.buttons button{
+    font-size: large;
+    display: flex;
+    justify-content: space-around;
+    width: 90px;
+    border-radius: 25px;
+    border: none;
+    background-color: aquamarine;
+    padding: 5px 10px;
+}
+.results *{
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+
+}
+.results{
+    display: flex;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+}
+#winpercent{
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+}
+#winpercent *{
+    display: flex;
+    justify-content: center;
+    width: 100px;
+
+}
+#winpercentnum{
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+    margin: 0;
+    align-items: baseline;
+}
+#winpercentnum span{
+    display: flex;
+    width: 100px;
+    justify-content: center;
+}
+#reset{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+#reset button{
+    font-size: large;
+    display: flex;
+    flex-basis: 100%;
+    justify-content: space-around;
+    width: 90px;
+    border-radius: 25px;
+    border: none;
+    background-color: red;
+    padding: 5px 10px;
+    color: white;
+    text-decoration: underline;
+
 }

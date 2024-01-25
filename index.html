@@ -2,12 +2,39 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>placeholder</title>
-    <script src="./indexscript.js"></script>
+    <title>Rock, paper, scissors!</title>
     <link href="./style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="section1">
+    <div class="container">
+        <div class="top">
+            <h1>Rock, Paper, Scissors!</h1>
+        </div>
+        <div class="buttons">
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissors">Scissors</button>
+        </div>
+        <div class="results">
+            <h2>Result:</h2><span id="result">-</span>
+            <h3 id="pw">Player wins:</h3><span id="pwc">-</span>
+            <h3 id="cw">Computer wins:</h3><span id="cwc">-</span>
+            <h3 id="ties">Ties:</h3><span id="tiecount">-</span>
+        </div>
+        <div id="winpercent">
+            <h5>Player win %:</h5>
+            <h5>Computer win %:</h5>
+        </div>
+        <div id="winpercentnum">
+            <span id="playerwin">-</span>
+            <span id="cpuwin">-</span>
+        </div>
+        <div id="reset">
+            <button id="resetbutton">Reset</button>
+        </div>
         <script src="./indexscript.js"></script>
     </div>
 </body>
